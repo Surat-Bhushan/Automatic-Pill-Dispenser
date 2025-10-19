@@ -101,11 +101,11 @@ void dispensePill() {
       delay(movementDelay);  // Faster movement
     }
   } else {
-    // ✅ Smoothly reset back to 0 degrees
+    //reset back to 0 degrees
     while (angle > 0) {
       angle -= 1;
       servo.write(angle);
-      delay(movementDelay);  // Faster movement
+      delay(movementDelay);  
     }
   }
 
@@ -117,7 +117,7 @@ void dispensePill() {
 
 void triggerAlarm() {
   if (angle == 0) {
-    // ✅ Display "Pill Dispenser is Ready!" instead of "Take Medicine!"
+    // Display message when lcd screen starts
     lcd.setCursor(0, 0);
     lcd.print("Pill Dispenser is Ready!  ");
     Serial.println("Pill Dispenser is Ready!");
@@ -125,7 +125,7 @@ void triggerAlarm() {
     digitalWrite(ledPin, LOW);
     digitalWrite(buzzerPin, LOW);
   } else {
-    // ✅ Normal behavior when dispensing
+    // Display message at the time of pill taking
     lcd.setCursor(0, 0);
     lcd.print("Take Medicine! ");
     Serial.println("Take Medicine!");
@@ -159,3 +159,4 @@ void updateLCD(int minutes, int seconds) {
   lcd.print(seconds);
   lcd.print("s  "); // Extra spaces to clear old characters
 }
+
